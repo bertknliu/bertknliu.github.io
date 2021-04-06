@@ -3,9 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
   <title>FingerPose Example</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
-
-
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"></script>
   <script src="fingerpose.js" type="text/javascript"></script>
   <style>
@@ -80,8 +78,7 @@
     const gestureStrings = {
       'thumbs_up': '👍',
       'victory': '✌🏻',
-    
-      'one': '1️⃣'
+      'thumbs_down': '👎'
 
     };
 
@@ -98,51 +95,32 @@
 
 
 
-      const oneDescription = new fp.GestureDescription('one');
-
+      const thumbsDownDescription = new fp.GestureDescription('thumbs_down');
 
 // thumb:
-oneDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.HalfCurl, 0.5);
-oneDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.NoCurl, 0.5);
-oneDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.VerticalUp, 1.0);
-oneDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalUpLeft, 1.0);
+// - not curled
+// - vertical up (best) or diagonal up left / right
+thumbsDownDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.NoCurl, 1.0);
+thumbsDownDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.VerticalDown, 1.0);
+thumbsDownDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalDownLeft, 0.25);
+thumbsDownDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalDownRight, 0.25);
 
-// index:
-oneDescription.addCurl(fp.Finger.Index, fp.FingerCurl.NoCurl, 1.0);
-oneDescription.addDirection(fp.Finger.Index, fp.FingerDirection.VerticalUp, 0.75);
-oneDescription.addDirection(fp.Finger.Index, fp.FingerDirection.DiagonalUpLeft, 1.0);
-
-// middle:
-oneDescription.addCurl(fp.Finger.Middle, fp.FingerCurl.FullCurl, 1.0);
-oneDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.VerticalUp, 0.2);
-oneDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.DiagonalUpLeft, 1.0);
-oneDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.HorizontalLeft, 0.2);
-
-// ring:
-oneDescription.addCurl(fp.Finger.Ring, fp.FingerCurl.FullCurl, 1.0);
-oneDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.VerticalUp, 0.2);
-oneDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.DiagonalUpLeft, 1.0);
-oneDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.HorizontalLeft, 0.2);
-
-// pinky:
-oneDescription.addCurl(fp.Finger.Pinky, fp.FingerCurl.FullCurl, 1.0);
-oneDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.VerticalUp, 0.2);
-oneDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.DiagonalUpLeft, 1.0);
-oneDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.HorizontalLeft, 0.2);
-
-// give additional weight to index and ring fingers
-oneDescription.setWeight(fp.Finger.Index, 2);
- 
+// all other fingers:
+// - curled
+// - horizontal left or right
+for(let finger of [fp.Finger.Index, fp.Finger.Middle, fp.Finger.Ring, fp.Finger.Pinky]) {
+  thumbsDownDescription.addCurl(finger, fp.FingerCurl.FullCurl, 1.0);
+  thumbsDownDescription.addDirection(finger, fp.FingerDirection.HorizontalLeft, 1.0);
+  thumbsDownDescription.addDirection(finger, fp.FingerDirection.HorizontalRight, 1.0);
+}
 
 
 
 
-
-      const knownGestures = [ 
+      const knownGestures = [thumbsDownDescription,
         fp.Gestures.VictoryGesture,
         fp.Gestures.ThumbsUpGesture,
-        oneDescription
-      
+        thumbsDownDescription
       ];
       const GE = new fp.GestureEstimator(knownGestures);
 

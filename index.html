@@ -79,7 +79,8 @@
       'thumbs_up': '👍',
       'victory': '✌🏻',
     
-      'one': '1️⃣'
+      'one': '1️⃣',
+      'three': '3️⃣',
 
     };
 
@@ -132,6 +133,42 @@ oneDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.HorizontalLeft, 
 oneDescription.setWeight(fp.Finger.Index, 2);
  
 
+const threeDescription = new fp.GestureDescription('three');
+
+
+// thumb:
+threeDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.HalfCurl, 0.5);
+threeDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.NoCurl, 0.5);
+threeDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.VerticalUp, 1.0);
+threeDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+// index:
+threeDescription.addCurl(fp.Finger.Index, fp.FingerCurl.NoCurl, 1.0);
+threeDescription.addDirection(fp.Finger.Index, fp.FingerDirection.VerticalUp, 0.75);
+threeDescription.addDirection(fp.Finger.Index, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+// middle:
+threeDescription.addCurl(fp.Finger.Middle, fp.FingerCurl.NoCurl, 1.0);
+threeDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.VerticalUp, 0.75);
+threeDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+// ring:
+threeDescription.addCurl(fp.Finger.Ring, fp.FingerCurl.NoCurl, 1.0);
+threeDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.VerticalUp, 0.75);
+threeDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+
+// pinky:
+threeDescription.addCurl(fp.Finger.Pinky, fp.FingerCurl.FullCurl, 1.0);
+threeDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.VerticalUp, 0.2);
+threeDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.DiagonalUpLeft, 1.0);
+threeDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.HorizontalLeft, 0.2);
+
+// give additional weight to index and ring fingers
+threeDescription.setWeight(fp.Finger.Index, 2);
+threeDescription.setWeight(fp.Finger.Middle, 2);
+threeDescription.setWeight(fp.Finger.Ring, 2);
+ 
 
 
 

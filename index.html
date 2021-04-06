@@ -79,7 +79,7 @@
       'thumbs_up': '👍',
       'victory': '✌🏻',
     
-      'rock': '✊'
+      'one': '1️⃣'
 
     };
 
@@ -96,27 +96,42 @@
 
 
 
-      const rockDescription = new fp.GestureDescription('rock');
+      const oneDescription = new GestureDescription('one');
+
 
 // thumb:
-// - not curled
-// - vertical up (best) or diagonal up left / right
+oneDescription.addCurl(Finger.Thumb, FingerCurl.HalfCurl, 0.5);
+oneDescription.addCurl(Finger.Thumb, FingerCurl.NoCurl, 0.5);
+oneDescription.addDirection(Finger.Thumb, FingerDirection.VerticalUp, 1.0);
+oneDescription.addDirection(Finger.Thumb, FingerDirection.DiagonalUpLeft, 1.0);
 
+// index:
+oneDescription.addCurl(Finger.Index, FingerCurl.NoCurl, 1.0);
+oneDescription.addDirection(Finger.Index, FingerDirection.VerticalUp, 0.75);
+oneDescription.addDirection(Finger.Index, FingerDirection.DiagonalUpLeft, 1.0);
 
+// middle:
+oneDescription.addCurl(Finger.Middle, FingerCurl.FullCurl, 1.0);
+oneDescription.addDirection(Finger.Middle, FingerDirection.VerticalUp, 0.2);
+oneDescription.addDirection(Finger.Middle, FingerDirection.DiagonalUpLeft, 1.0);
+oneDescription.addDirection(Finger.Middle, FingerDirection.HorizontalLeft, 0.2);
 
-rockDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.HalfCurl, 0.6);
-rockDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.VerticalDown, 1.0);
-rockDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalDownLeft, 0.25);
-rockDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalDownRight, 0.25);
+// ring:
+oneDescription.addCurl(Finger.Ring, FingerCurl.FullCurl, 1.0);
+oneDescription.addDirection(Finger.Ring, FingerDirection.VerticalUp, 0.2);
+oneDescription.addDirection(Finger.Ring, FingerDirection.DiagonalUpLeft, 1.0);
+oneDescription.addDirection(Finger.Ring, FingerDirection.HorizontalLeft, 0.2);
 
-// all other fingers:
-// - curled
-// - horizontal left or right
-for(let finger of [fp.Finger.Index, fp.Finger.Middle, fp.Finger.Ring, fp.Finger.Pinky]) {
-  rockDescription.addCurl(finger, fp.FingerCurl.FullCurl, 1.0);
-  rockDescription.addDirection(finger, fp.FingerDirection.HorizontalLeft, 1.0);
-  rockDescription.addDirection(finger, fp.FingerDirection.HorizontalRight, 1.0);
-}
+// pinky:
+oneDescription.addCurl(Finger.Pinky, FingerCurl.FullCurl, 1.0);
+oneDescription.addDirection(Finger.Pinky, FingerDirection.VerticalUp, 0.2);
+oneDescription.addDirection(Finger.Pinky, FingerDirection.DiagonalUpLeft, 1.0);
+oneDescription.addDirection(Finger.Pinky, FingerDirection.HorizontalLeft, 0.2);
+
+// give additional weight to index and ring fingers
+oneDescription.setWeight(Finger.Index, 2);
+ 
+
 
 
 
@@ -124,7 +139,7 @@ for(let finger of [fp.Finger.Index, fp.Finger.Middle, fp.Finger.Ring, fp.Finger.
       const knownGestures = [ 
         fp.Gestures.VictoryGesture,
         fp.Gestures.ThumbsUpGesture,
-        rockDescription
+        oneDescription
       
       ];
       const GE = new fp.GestureEstimator(knownGestures);

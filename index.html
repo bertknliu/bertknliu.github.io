@@ -104,43 +104,27 @@
 
 
 
-rockDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.HalfCurl, 0.5);
-rockDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.NoCurl, 0.5);
-rockDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.VerticalUp, 1.0);
-rockDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalUpLeft, 1.0);
+rockDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.FullCurl, 1.0);
+rockDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.VerticalDown, 1.0);
+rockDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalDownLeft, 0.25);
+rockDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalDownRight, 0.25);
 
+// all other fingers:
+// - curled
+// - horizontal left or right
+for(let finger of [fp.Finger.Index, fp.Finger.Middle, fp.Finger.Ring, fp.Finger.Pinky]) {
+  rockDescription.addCurl(finger, fp.FingerCurl.FullCurl, 1.0);
+  rockDescription.addDirection(finger, fp.FingerDirection.HorizontalLeft, 1.0);
+  rockDescription.addDirection(finger, fp.FingerDirection.HorizontalRight, 1.0);
+}
 
-rockDescription.addCurl(fp.Finger.Index, fp.FingerCurl.FullCurl, 1.0);
-rockDescription.addDirection(fp.Finger.Index, fp.FingerDirection.VerticalUp, 0.2);
-rockDescription.addDirection(fp.Finger.Index, fp.FingerDirection.DiagonalUpLeft, 1.0);
-rockDescription.addDirection(fp.Finger.Index, fp.FingerDirection.HorizontalLeft, 0.2);
-
-rockDescription.addCurl(fp.Finger.Middle, fp.FingerCurl.FullCurl, 1.0);
-rockDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.VerticalUp, 0.2);
-rockDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.DiagonalUpLeft, 1.0);
-rockDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.HorizontalLeft, 0.2);
-
-
-
-rockDescription.addCurl(fp.Finger.Ring, fp.FingerCurl.FullCurl, 1.0);
-rockDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.VerticalUp, 0.2);
-rockDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.DiagonalUpLeft, 1.0);
-rockDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.HorizontalLeft, 0.2);
-
-rockDescription.addCurl(fp.Finger.Pinky, fp.FingerCurl.FullCurl, 1.0);
-rockDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.VerticalUp, 0.2);
-rockDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.DiagonalUpLeft, 1.0);
-rockDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.HorizontalLeft, 0.2);
-
- 
- 
 
 
 
       const knownGestures = [ 
         fp.Gestures.VictoryGesture,
         fp.Gestures.ThumbsUpGesture,
-        rockDescription
+      
       ];
       const GE = new fp.GestureEstimator(knownGestures);
 

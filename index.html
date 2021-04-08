@@ -104,7 +104,8 @@
       'one': '1️⃣',
       'three': '3️⃣',
       'four': '4️⃣',
-      'five': '5️⃣'
+      'five': '5️⃣',
+      'spiderman': '🕷️'
 
     };
 
@@ -123,6 +124,39 @@
 
 
 
+
+
+
+      const spiderManDescription = new fp.GestureDescription('spiderman');
+
+
+// thumb:
+spiderManDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.NoCurl, 1.0);
+spiderManDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.VerticalUp, 0.75);
+spiderManDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+
+// index:
+spiderManDescription.addCurl(fp.Finger.Index, fp.FingerCurl.NoCurl, 1.0);
+spiderManDescription.addDirection(fp.Finger.Index, fp.FingerDirection.VerticalUp, 0.75);
+spiderManDescription.addDirection(fp.Finger.Index, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+// middle:
+spiderManDescription.addCurl(fp.Finger.Middle, fp.FingerCurl.FullCurl, 1.0);
+spiderManDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.VerticalUp, 0.2);
+spiderManDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.DiagonalUpLeft, 1.0);
+spiderManDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.HorizontalLeft, 0.2);
+
+// ring:
+spiderManDescription.addCurl(fp.Finger.Ring, fp.FingerCurl.FullCurl, 1.0);
+spiderManDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.VerticalUp, 0.2);
+spiderManDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.DiagonalUpLeft, 1.0);
+spiderManDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.HorizontalLeft, 0.2);
+
+// pinky:
+spiderManDescription.addCurl(fp.Finger.Pinky, fp.FingerCurl.NoCurl, 1.0);
+spiderManDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.VerticalUp, 0.75);
+spiderManDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.DiagonalUpLeft, 1.0);
 
 
 
@@ -328,7 +362,8 @@ fiveDescription.setWeight(fp.Finger.Thumb, 2);
         threeDescription,
         fourDescription,
         fiveDescription,
-        gunDescription
+        gunDescription,
+        spiderManDescription
       
       ];
       const GE = new fp.GestureEstimator(knownGestures);

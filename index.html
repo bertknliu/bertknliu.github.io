@@ -100,7 +100,7 @@
     const gestureStrings = {
       'thumbs_up': '👍',
       'victory': '✌🏻',
-      'rock': '✊',
+      'rock': '✊'
       'one': '1️⃣',
       'three': '3️⃣',
       'four': '4️⃣',
@@ -122,44 +122,47 @@
 
 
 
-      const rockDescription = new fp.GestureDescription('rock');
+
+
+
+
+      const gunDescription = new fp.GestureDescription('one');
 
 
 // thumb:
-rockDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.HalfCurl, 0.5);
-rockDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.NoCurl, 0.5);
-rockDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.VerticalUp, 1.0);
-rockDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalUpLeft, 1.0);
+gunDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.NoCurl, 1.0);
+gunDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.VerticalUp, 0.75);
+gunDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
 
 // index:
-rockDescription.addCurl(fp.Finger.Index, fp.FingerCurl.FullCurl, 1.0);
-rockDescription.addDirection(fp.Finger.Index, fp.FingerDirection.VerticalUp, 0.2);
-rockDescription.addDirection(fp.Finger.Index, fp.FingerDirection.DiagonalUpLeft, 1.0);
-rockDescription.addDirection(fp.Finger.Index, fp.FingerDirection.HorizontalLeft, 0.2);
+gunDescription.addCurl(fp.Finger.Index, fp.FingerCurl.NoCurl, 1.0);
+gunDescription.addDirection(fp.Finger.Index, fp.FingerDirection.VerticalUp, 0.75);
+gunDescription.addDirection(fp.Finger.Index, fp.FingerDirection.DiagonalUpLeft, 1.0);
 
 // middle:
-rockDescription.addCurl(fp.Finger.Middle, fp.FingerCurl.FullCurl, 1.0);
-rockDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.VerticalUp, 0.2);
-rockDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.DiagonalUpLeft, 1.0);
-rockDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.HorizontalLeft, 0.2);
+gunDescription.addCurl(fp.Finger.Middle, fp.FingerCurl.FullCurl, 1.0);
+gunDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.VerticalUp, 0.2);
+gunDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.DiagonalUpLeft, 1.0);
+gunDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.HorizontalLeft, 0.2);
 
 // ring:
-rockDescription.addCurl(fp.Finger.Ring, fp.FingerCurl.FullCurl, 1.0);
-rockDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.VerticalUp, 0.2);
-rockDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.DiagonalUpLeft, 1.0);
-rockDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.HorizontalLeft, 0.2);
+gunDescription.addCurl(fp.Finger.Ring, fp.FingerCurl.FullCurl, 1.0);
+gunDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.VerticalUp, 0.2);
+gunDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.DiagonalUpLeft, 1.0);
+gunDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.HorizontalLeft, 0.2);
 
 // pinky:
-rockDescription.addCurl(fp.Finger.Pinky, fp.FingerCurl.FullCurl, 1.0);
-rockDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.VerticalUp, 0.2);
-rockDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.DiagonalUpLeft, 1.0);
-rockDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.HorizontalLeft, 0.2);
-
- 
+gunDescription.addCurl(fp.Finger.Pinky, fp.FingerCurl.FullCurl, 1.0);
+gunDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.VerticalUp, 0.2);
+gunDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.DiagonalUpLeft, 1.0);
+gunDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.HorizontalLeft, 0.2);
 
 
 
 
+
+      
 
       const oneDescription = new fp.GestureDescription('one');
 
@@ -324,8 +327,7 @@ fiveDescription.setWeight(fp.Finger.Thumb, 2);
         oneDescription,
         threeDescription,
         fourDescription,
-        fiveDescription,
-        rockDescription
+        fiveDescription
       
       ];
       const GE = new fp.GestureEstimator(knownGestures);

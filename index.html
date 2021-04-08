@@ -103,6 +103,7 @@
     
       'one': '1️⃣',
       'three': '3️⃣',
+      'four': '4️⃣'
 
     };
 
@@ -191,15 +192,53 @@ threeDescription.setWeight(fp.Finger.Index, 2);
 threeDescription.setWeight(fp.Finger.Middle, 2);
 threeDescription.setWeight(fp.Finger.Ring, 2);
  
+//Four
 
 
+const fourDescription = new fp.GestureDescription('four');
+
+
+// thumb:
+fourDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.HalfCurl, 0.5);
+fourDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.NoCurl, 0.5);
+fourDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.VerticalUp, 1.0);
+fourDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+// index:
+fourDescription.addCurl(fp.Finger.Index, fp.FingerCurl.NoCurl, 1.0);
+fourDescription.addDirection(fp.Finger.Index, fp.FingerDirection.VerticalUp, 0.75);
+fourDescription.addDirection(fp.Finger.Index, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+// middle:
+fourDescription.addCurl(fp.Finger.Middle, fp.FingerCurl.NoCurl, 1.0);
+fourDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.VerticalUp, 0.75);
+fourDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+// ring:
+fourDescription.addCurl(fp.Finger.Ring, fp.FingerCurl.NoCurl, 1.0);
+fourDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.VerticalUp, 0.75);
+fourDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+
+// pinky:
+fourDescription.addCurl(fp.Finger.Pinky, fp.FingerCurl.NoCurl, 1.0);
+fourDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.VerticalUp, 0.75);
+fourDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+
+// give additional weight to index and ring fingers
+fourDescription.setWeight(fp.Finger.Index, 2);
+fourDescription.setWeight(fp.Finger.Middle, 2);
+fourDescription.setWeight(fp.Finger.Ring, 2);
+fourDescription.setWeight(fp.Finger.Pinky, 2);
 
 
       const knownGestures = [ 
         fp.Gestures.VictoryGesture,
         fp.Gestures.ThumbsUpGesture,
         oneDescription,
-        threeDescription
+        threeDescription,
+        fourDescription
       
       ];
       const GE = new fp.GestureEstimator(knownGestures);

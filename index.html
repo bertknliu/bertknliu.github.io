@@ -103,7 +103,8 @@
     
       'one': '1️⃣',
       'three': '3️⃣',
-      'four': '4️⃣'
+      'four': '4️⃣',
+      'five': '5️⃣'
 
     };
 
@@ -231,6 +232,50 @@ fourDescription.setWeight(fp.Finger.Index, 2);
 fourDescription.setWeight(fp.Finger.Middle, 2);
 fourDescription.setWeight(fp.Finger.Ring, 2);
 fourDescription.setWeight(fp.Finger.Pinky, 2);
+
+
+
+//Five
+
+const fiveDescription = new fp.GestureDescription('five');
+
+
+// thumb:
+fiveDescription.addCurl(fp.Finger.Thumb, fp.FingerCurl.NoCurl, 1.0);
+fiveDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.VerticalUp, 0.75);
+fiveDescription.addDirection(fp.Finger.Thumb, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+// index:
+fiveDescription.addCurl(fp.Finger.Index, fp.FingerCurl.NoCurl, 1.0);
+fiveDescription.addDirection(fp.Finger.Index, fp.FingerDirection.VerticalUp, 0.75);
+fiveDescription.addDirection(fp.Finger.Index, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+// middle:
+fiveDescription.addCurl(fp.Finger.Middle, fp.FingerCurl.NoCurl, 1.0);
+fiveDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.VerticalUp, 0.75);
+fiveDescription.addDirection(fp.Finger.Middle, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+// ring:
+fiveDescription.addCurl(fp.Finger.Ring, fp.FingerCurl.NoCurl, 1.0);
+fiveDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.VerticalUp, 0.75);
+fiveDescription.addDirection(fp.Finger.Ring, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+
+// pinky:
+fiveDescription.addCurl(fp.Finger.Pinky, fp.FingerCurl.NoCurl, 1.0);
+fiveDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.VerticalUp, 0.75);
+fiveDescription.addDirection(fp.Finger.Pinky, fp.FingerDirection.DiagonalUpLeft, 1.0);
+
+
+// give additional weight to index and ring fingers
+fiveDescription.setWeight(fp.Finger.Index, 2);
+fiveDescription.setWeight(fp.Finger.Middle, 2);
+fiveDescription.setWeight(fp.Finger.Ring, 2);
+fiveDescription.setWeight(fp.Finger.Pinky, 2);
+fiveDescription.setWeight(fp.Finger.Thumb, 2);
+
+
+
 
 
       const knownGestures = [ 

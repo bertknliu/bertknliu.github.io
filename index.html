@@ -100,7 +100,7 @@
     const gestureStrings = {
       'thumbs_up': '👍',
       'victory': '✌🏻',
-      'rock': '✊'
+      'gun': '🔫'
       'one': '1️⃣',
       'three': '3️⃣',
       'four': '4️⃣',
@@ -126,7 +126,7 @@
 
 
 
-      const gunDescription = new fp.GestureDescription('one');
+      const gunDescription = new fp.GestureDescription('gun');
 
 
 // thumb:
@@ -327,7 +327,8 @@ fiveDescription.setWeight(fp.Finger.Thumb, 2);
         oneDescription,
         threeDescription,
         fourDescription,
-        fiveDescription
+        fiveDescription,
+        gunDescription
       
       ];
       const GE = new fp.GestureEstimator(knownGestures);

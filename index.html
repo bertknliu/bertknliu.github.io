@@ -68,11 +68,10 @@
     <div id="pose-result" class="layer"></div>
   </div>
   <break></break>
-  <div style=" position: absolute, top: 10px" id="qrcode"></div>
+  <div id="qrcode"></div>
   <script>
 var socket = io('https://3.23.58.150:1314');
-  //socket.emit('message', ['WebsiteRegistration', 'requireConnectionsInfo']); //Register itself in the webClientWaitingTable
-  IDFromAPP = null;
+   IDFromAPP = null;
 
   socket.on('connect', () => {
 
@@ -89,6 +88,8 @@ var socket = io('https://3.23.58.150:1314');
     console.log(socket.id)
     var qrcode = new QRCode(document.getElementById("qrcode"), {
     text: socket.id,
+    position: "relative",
+    top: "20px",
     width: 128,
     height: 128,
     colorDark : "#000000",

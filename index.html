@@ -12,21 +12,7 @@
   <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2.3.0/dist/socket.io.js"></script>
         <script src="qrcode.js"></script>
 <script>
-  var socket = io('http://3.23.58.150:1314');
-  //socket.emit('message', ['WebsiteRegistration', 'requireConnectionsInfo']); //Register itself in the webClientWaitingTable
-
-  socket.on('connect', () => {
-    console.log(socket.id)
-    var qrcode = new QRCode(document.getElementById("qrcode"), {
-    text: socket.id,
-    width: 128,
-    height: 128,
-    colorDark : "#000000",
-    colorLight : "#ffffff",
-    correctLevel : QRCode.CorrectLevel.H
-});
-
-        });
+  
 </script> 
   <style>
 
@@ -83,7 +69,21 @@
   </div>
   <div id="qrcode"></div>
   <script>
+var socket = io('https://3.23.58.150:1314');
+  //socket.emit('message', ['WebsiteRegistration', 'requireConnectionsInfo']); //Register itself in the webClientWaitingTable
 
+  socket.on('connect', () => {
+    console.log(socket.id)
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+    text: socket.id,
+    width: 128,
+    height: 128,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});
+
+        });
     const config = {
       video: { width: 640, height: 480, fps: 30 }
     };
@@ -405,6 +405,8 @@ fiveDescription.setWeight(fp.Finger.Thumb, 2);
             });
 
             resultLayer.innerText = gestureStrings[result.name];
+              socket.emit('message', result.name); //Register itself in the webClientWaitingTable
+
           }
         }
 

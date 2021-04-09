@@ -71,8 +71,20 @@
   <script>
 var socket = io('https://3.23.58.150:1314');
   //socket.emit('message', ['WebsiteRegistration', 'requireConnectionsInfo']); //Register itself in the webClientWaitingTable
+  IDFromAPP = null;
 
   socket.on('connect', () => {
+
+
+    socket.on('message', (msg) => {
+      console.log(msg);
+        if (msg[0]=="IDFromAPP"){
+            //We except the data we receive is ["app_website_binding", "connectionIDFromQRCode"]
+            IDFromAPP = msg[1];        
+      
+    });
+
+
     console.log(socket.id)
     var qrcode = new QRCode(document.getElementById("qrcode"), {
     text: socket.id,
@@ -405,7 +417,7 @@ fiveDescription.setWeight(fp.Finger.Thumb, 2);
             });
 
             resultLayer.innerText = gestureStrings[result.name];
-              socket.emit('message', result.name); //Register itself in the webClientWaitingTable
+              socket.emit('message', ["message_from_website",IDFromAPP,gestureStrings[result.name],]); //Register itself in the webClientWaitingTable
 
           }
         }

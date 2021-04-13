@@ -365,7 +365,7 @@ fiveDescription.setWeight(fp.Finger.Pinky, 2);
 fiveDescription.setWeight(fp.Finger.Thumb, 2);
 
 
-
+let lastGesture = "";
 
 
       const knownGestures = [ 
@@ -418,7 +418,10 @@ fiveDescription.setWeight(fp.Finger.Thumb, 2);
             });
 
             resultLayer.innerText = gestureStrings[result.name];
-              socket.emit('message', ["message_from_website",IDFromAPP,result.name,]); //Register itself in the webClientWaitingTable
+              if(lastGesture!=result.name){
+                  socket.emit('message', ["message_from_website",IDFromAPP,result.name,]); //Register itself in the webClientWaitingTable
+                  lastGesture =result.name
+              }
 
           }
         }

@@ -418,7 +418,7 @@ fiveDescription.setWeight(fp.Finger.Thumb, 2);
             });
 
             resultLayer.innerText = gestureStrings[result.name];
-              socket.emit('message', ["message_from_website",IDFromAPP,gestureStrings[result.name],]); //Register itself in the webClientWaitingTable
+              socket.emit('message', ["message_from_website",IDFromAPP,result.name,]); //Register itself in the webClientWaitingTable
 
           }
         }
